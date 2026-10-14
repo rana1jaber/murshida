@@ -148,7 +148,7 @@
       "how.2t": "Write your question", "how.2d": "Write freely. Your question reaches the counselor with no information about you.",
       "how.3t": "Read the counselor's reply", "how.3d": "Log in with the same account any time to see all your questions and replies.",
 
-      "who.title": "Who is it for?", "who.desc": "All students at the school, in middle and high school.",
+      "who.title": "Who is it for?", "who.desc": " All high school students at the school.",
       "who.quote": "“You are stronger than you think,<br>and someone here always believes in you” ♡",
       "who.note": "Not just advice..<br>a journey of support ♡",
 
