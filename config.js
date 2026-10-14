@@ -13,5 +13,5 @@ window.MURSHIDA_CONFIG = {
   // لا يُرسل له أي بريد (لأن تأكيد الإيميل مطفأ).
   USERNAME_DOMAIN: "students.murshida.local",
 
-  SCHOOL_NAME: "المدرسة"
+ SCHOOL_NAME: "الشراع الأولى"
 };
