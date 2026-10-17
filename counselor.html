@@ -40,6 +40,61 @@
   .reply-actions .form-error { min-height: 0; }
   .anon { font-size: .82rem; color: var(--muted); display: inline-flex; gap: 6px; align-items: center; }
   .anon svg { width: 15px; height: 15px; }
+
+  /* ---------- Top-level sections ---------- */
+  .ctabs { display: flex; gap: 4px; border-bottom: 2px solid var(--line); overflow-x: auto; margin-bottom: 22px; }
+  .ctab { border: 0; background: transparent; padding: 10px 16px; font-weight: 700; cursor: pointer; color: var(--muted); white-space: nowrap;
+    border-bottom: 3px solid transparent; margin-bottom: -2px; display: inline-flex; gap: 8px; align-items: center; font-size: 1rem; }
+  .ctab[aria-selected="true"] { color: var(--accent-ink); border-bottom-color: var(--accent); }
+  .ctab .badge:empty { display: none; }
+  /* شريط التمرير يختفي (يظهر في ويندوز لما تكون التبويبات أعرض أو أطول بشوي) */
+  .ctabs, .tabs { overflow-y: hidden; scrollbar-width: none; -ms-overflow-style: none; }
+  .ctabs::-webkit-scrollbar, .tabs::-webkit-scrollbar { display: none; }
+
+  /* ---------- Values admin ---------- */
+  .cv-layout { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 24px; align-items: start; }
+  .cv-form { display: grid; gap: 14px; position: sticky; top: calc(84px + env(safe-area-inset-top, 0px)); }
+  .cv-form h2, .cv-list h2 { font-size: 1.25rem; font-weight: 700; }
+  .cv-form .textarea { min-height: 90px; }
+  .swatches { display: flex; gap: 10px; flex-wrap: wrap; border: 0; padding: 0; margin: 0; }
+  .swatches legend { font-weight: 600; font-size: .95rem; margin-bottom: 8px; padding: 0; }
+  .swatch { position: relative; }
+  .swatch input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+  .swatch span { display: block; width: 36px; height: 36px; border-radius: 50%; background: var(--vc); border: 2px solid var(--line); }
+  .swatch input:checked + span { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent); }
+  .swatch input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .form-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .cv-list { display: grid; gap: 14px; min-width: 0; }
+  .cv-item { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; display: grid; grid-template-columns: 10px 1fr; }
+  .cv-item.is-editing { border-color: var(--accent); }
+  .cv-stripe { background: var(--vc); }
+  .cv-main { padding: 14px 18px; display: grid; gap: 8px; min-width: 0; }
+  .cv-head { display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .cv-head h3 { font-size: 1.15rem; font-weight: 700; overflow-wrap: anywhere; }
+  .cv-meta { font-size: .82rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .cv-main .v-brief { color: var(--muted); font-size: .92rem; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .cv-beh { margin: 0; padding-inline-start: 18px; font-size: .9rem; display: grid; gap: 2px; }
+  .cv-acts { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  /* ---------- Works admin ---------- */
+  .wa-list { display: grid; gap: 14px; }
+  .wa-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; display: grid; grid-template-columns: 180px minmax(0, 1fr); }
+  .wa-card.is-pending { border-inline-start: 4px solid var(--spark); }
+  .wa-card .w-media { aspect-ratio: auto; min-height: 140px; height: 100%; }
+  .wa-body { padding: 14px 18px; display: grid; gap: 8px; align-content: start; }
+  .wa-top { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+  .wa-body h3 { font-size: 1.1rem; font-weight: 700; overflow-wrap: anywhere; }
+  .wa-desc { color: var(--muted); font-size: .92rem; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .wa-acts { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  @media (max-width: 860px) {
+    .cv-layout { grid-template-columns: 1fr; }
+    .cv-form { position: static; }
+  }
+  @media (max-width: 560px) {
+    .wa-card { grid-template-columns: 1fr; }
+    .wa-card .w-media { aspect-ratio: 16 / 9; min-height: 0; }
+  }
 </style>
 </head>
 <body data-title-key="page.counselorTitle">
@@ -126,6 +181,7 @@
 
         <div class="q-list" id="list" aria-live="polite"></div>
       </div>
+
     </div>
   </section>
 </main>
@@ -181,6 +237,7 @@
     render();
   }));
   $("#refreshBtn").addEventListener("click", load);
+
 
   async function load() {
     $("#list").innerHTML = `<div class="empty">${t("loading")}</div>`;

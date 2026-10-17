@@ -131,7 +131,7 @@ button, input, textarea { font: inherit; color: inherit; }
 }
 
 /* ---------- Forms ---------- */
-.field { display: grid; gap: 6px; }
+.field { display: grid; gap: 6px; align-content: start; }
 .field label { font-weight: 600; font-size: .95rem; }
 .field .hint { font-size: .85rem; color: var(--muted); }
 .input, .textarea {
@@ -219,3 +219,61 @@ button, input, textarea { font: inherit; color: inherit; }
 :lang(en) .hand, :lang(en) .sticky-note { font-family: var(--f-hand-en); font-size: 1.3em; font-weight: 700; }
 :lang(en) .sticky-note { font-size: 1.35rem; }
 :lang(en) .brand-name { letter-spacing: .01em; }
+
+/* ---------- Values platform (shared by students & counselor) ---------- */
+.vc-lilac { --vc: var(--lilac); } .vc-sky { --vc: var(--sky); } .vc-mint { --vc: var(--mint); }
+.vc-peach { --vc: var(--peach); } .vc-sun { --vc: var(--note); }
+.v-initial {
+  font-family: var(--f-display); font-weight: 400; line-height: 1; color: var(--accent-ink);
+  background: var(--vc, var(--lilac)); display: grid; place-items: center;
+}
+.chip-rej { background: color-mix(in srgb, var(--danger) 14%, transparent); color: var(--danger); }
+.v-chip {
+  display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; padding: 2px 12px;
+  font-size: .8rem; font-weight: 700; background: var(--vc, var(--lilac)); color: var(--ink);
+}
+.btn-sm { padding: 6px 14px; font-size: .85rem; }
+.btn-danger { background: transparent; color: var(--danger); border-color: color-mix(in srgb, var(--danger) 45%, transparent); }
+.btn-danger:hover { background: color-mix(in srgb, var(--danger) 10%, transparent); }
+.btn-danger-solid { background: var(--danger); color: var(--surface); }
+
+/* Work (submission) card */
+.w-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 18px; }
+.w-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+.w-media { aspect-ratio: 4 / 3; max-width: 100%; background: var(--vc, var(--surface-2)); display: grid; place-items: center; position: relative; overflow: hidden; }
+.w-media img { width: 100%; height: 100%; object-fit: cover; }
+.w-media .v-initial { width: 100%; height: 100%; font-size: 4.5rem; background: transparent; opacity: .55; }
+.w-media .pdf { display: grid; justify-items: center; gap: 6px; color: var(--accent-ink); font-weight: 700; font-size: .9rem; }
+.w-media .pdf svg { width: 44px; height: 44px; }
+.w-media a { position: absolute; inset: 0; }
+.w-body { padding: 16px 18px; display: grid; gap: 8px; align-content: start; flex: 1; }
+.w-body h3 { font-size: 1.05rem; font-weight: 700; overflow-wrap: anywhere; }
+.w-desc { color: var(--muted); font-size: .92rem; overflow-wrap: anywhere; white-space: pre-wrap;
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.w-meta { font-size: .82rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 10px; }
+.w-meta b { color: var(--ink); font-weight: 700; }
+
+/* File drop zone */
+.drop {
+  border: 2px dashed var(--line); border-radius: var(--r-md); padding: 20px; text-align: center;
+  color: var(--muted); cursor: pointer; display: grid; gap: 6px; justify-items: center; background: var(--surface);
+  transition: border-color .15s, background .15s;
+}
+.drop svg { width: 30px; height: 30px; color: var(--accent-ink); }
+.drop:hover, .drop.is-over { border-color: var(--accent); background: var(--surface-2); }
+.drop { position: relative; }
+.drop input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.drop:focus-within { outline: 3px solid var(--accent); outline-offset: 3px; }
+.file-pill { display: flex; align-items: center; gap: 12px; background: var(--surface-2); border-radius: var(--r-md); padding: 10px 12px; min-width: 0; }
+.file-pill img { width: 54px; height: 54px; object-fit: cover; border-radius: 8px; flex: none; }
+.file-pill .fp-icon { width: 54px; height: 54px; border-radius: 8px; background: var(--surface); display: grid; place-items: center; flex: none; color: var(--accent-ink); }
+.file-pill .fp-icon svg { width: 26px; height: 26px; }
+.file-pill .fp-text { min-width: 0; flex: 1; display: grid; }
+.file-pill .fp-name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; direction: ltr; text-align: start; unicode-bidi: plaintext; }
+.file-pill .fp-size { font-size: .8rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.inline-confirm { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; background: color-mix(in srgb, var(--danger) 8%, var(--surface)); border-radius: var(--r-sm); padding: 10px 12px; }
+.inline-confirm p { flex: 1 1 200px; font-weight: 600; color: var(--danger); font-size: .9rem; }
+.badge { display: inline-grid; place-items: center; min-width: 22px; height: 22px; padding: 0 6px; border-radius: 999px; background: var(--spark); color: #2E2552; font-size: .75rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.v-initial svg { width: 52%; height: 52%; }
+.w-media .v-initial svg { width: 64px; height: 64px; }

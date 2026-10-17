@@ -91,20 +91,106 @@
   .list-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
   .list-head h2 { font-size: 1.25rem; font-weight: 700; }
 
+  [id] { scroll-margin-top: 96px; }
+  :lang(en) .flip-rtl, [dir="ltr"] .flip-rtl { transform: none; }
+  [dir="rtl"] .flip-rtl { transform: scaleX(-1); }
+
+  .brand-who { font-family: var(--f-body); font-size: .8rem; font-weight: 600; color: var(--muted); margin-inline-start: 4px; white-space: nowrap; }
+
+  /* ---------- YouTube bar ---------- */
+  .yt-row { display: flex; }
+  .yt-link { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: var(--ink); font-weight: 700; font-size: .9rem;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 5px 14px 5px 12px; }
+  .yt-link:hover { border-color: var(--accent); color: var(--accent-ink); }
+  .yt-link > svg:first-child { width: 22px; height: 22px; color: #D93A3A; flex: none; }
+  .yt-arrow { width: 14px; height: 14px; color: var(--muted); }
+  [dir="ltr"] .yt-arrow { transform: none; } [dir="rtl"] .yt-arrow { transform: scaleX(-1); }
+
+  /* ---------- Values teaser on home ---------- */
+  .vt-band {
+    display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center;
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg);
+    padding: clamp(18px, 3vw, 28px); text-decoration: none; color: var(--ink); box-shadow: var(--shadow);
+  }
+  .vt-band:hover { border-color: var(--accent); }
+  .vt-letters { display: flex; gap: 6px; direction: rtl; }
+  .vt-letters span {
+    width: 54px; height: 64px; display: grid; place-items: center; border-radius: 14px; background: var(--vc);
+    font-family: var(--f-display); font-size: 2rem; color: var(--accent-ink);
+  }
+  .vt-letters span:nth-child(2) { transform: translateY(-8px) rotate(4deg); }
+  .vt-letters span:nth-child(3) { transform: rotate(-4deg); }
+  .vt-text { display: grid; gap: 4px; min-width: 0; }
+  .vt-eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .04em; color: var(--accent-ink); }
+  .vt-title { font-family: var(--f-display); font-size: 1.7rem; line-height: 1.2; }
+  .vt-desc { color: var(--muted); max-width: 60ch; }
+  .vt-btn { pointer-events: none; }
+
+  /* ---------- Values view ---------- */
+  .v-hero { padding-block: clamp(28px, 5vw, 56px); }
+  .v-hero-in { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(24px, 4vw, 48px); align-items: center; }
+  .v-hero-text { display: grid; gap: 16px; min-width: 0; }
+  .v-title { font-family: var(--f-display); font-weight: 400; font-size: clamp(2.4rem, 5.5vw, 4rem); line-height: 1.15; }
+  .v-hand { font-size: 1.35rem; }
+  .v-hero .lead { font-size: 1.08rem; color: var(--muted); max-width: 46ch; }
+  .v-stats { margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .v-stat { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); padding: 18px 14px; display: grid; gap: 2px; text-align: center; }
+  .v-stat dd { margin: 0; font-family: var(--f-display); font-size: 2.6rem; line-height: 1.1; color: var(--accent-ink); font-variant-numeric: tabular-nums; }
+  .v-stat dt { color: var(--muted); font-size: .88rem; }
+
+  .v-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+  .v-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+  .v-card-top { display: flex; align-items: center; gap: 14px; padding: 18px 20px; background: var(--vc); }
+  .v-card-top .v-initial { width: 56px; height: 56px; border-radius: 16px; font-size: 2rem; background: var(--surface); flex: none; }
+  .v-card-top h3 { font-family: var(--f-display); font-weight: 400; font-size: 1.6rem; line-height: 1.2; overflow-wrap: anywhere; }
+  .v-card-body { padding: 18px 20px; display: grid; gap: 12px; align-content: start; flex: 1; }
+  .v-brief { white-space: pre-wrap; overflow-wrap: anywhere; }
+  .v-beh-title { font-size: .82rem; font-weight: 700; color: var(--accent-ink); letter-spacing: .02em; }
+  .v-beh { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+  .v-beh li { display: flex; gap: 8px; align-items: flex-start; font-size: .95rem; overflow-wrap: anywhere; }
+  .v-beh li::before { content: "♡"; color: var(--accent-ink); flex: none; line-height: 1.75; }
+  .v-card-foot { padding: 14px 20px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+  .v-count { font-size: .85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .v-card-foot .acts { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  .v-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .v-filter { border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 6px 16px; font-weight: 600; cursor: pointer; font-size: .9rem; }
+  .v-filter[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+
+  .v-form-wrap { max-width: 760px; margin-inline: auto; }
+  .v-form { display: grid; gap: 18px; }
+  .v-form-title { font-family: var(--f-display); font-weight: 400; font-size: clamp(1.8rem, 3.6vw, 2.3rem); }
+  .v-form .sub { color: var(--muted); }
+  .v-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .v-span { grid-column: 1 / -1; }
+  .label-like { font-weight: 600; font-size: .95rem; }
+  select.input { appearance: auto; }
+  .v-done { text-align: center; display: grid; gap: 10px; justify-items: center; }
+  .v-done-mark { font-size: 3rem; color: var(--accent-ink); line-height: 1; }
+  .v-done h2 { font-family: var(--f-display); font-weight: 400; font-size: 2rem; }
+  .v-done p { color: var(--muted); }
+
   @media (max-width: 900px) {
     .hero .wrap { grid-template-columns: 1fr; }
     .hero-art { order: -1; }
     .services { grid-template-columns: repeat(2, 1fr); }
     .who-band { grid-template-columns: 1fr; }
     .who-band .sticky-note { justify-self: center; }
+    .v-hero-in { grid-template-columns: 1fr; }
+    .vt-band { grid-template-columns: 1fr; justify-items: start; }
   }
-  @media (max-width: 640px) { .steps { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) {
+    .steps { grid-template-columns: 1fr; }
+    .v-fields { grid-template-columns: 1fr; }
+    .v-stat dd { font-size: 2rem; }
+  }
   @media (max-width: 420px) { .services { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body data-title-key="page.title">
 
 <div class="demo-bar" id="demoBar" hidden data-i18n-html="demo.bar"></div>
+
 
 <header class="site-header">
   <div class="wrap">
@@ -120,7 +206,7 @@
         <circle class="l-knob" cx="32.6" cy="4.2" r="2"/>
         <path class="l-flag" d="M34.2 5.6C38 3.4 41 7.2 46.5 5.4 45.4 9.6 42.4 11.6 38.6 11.4 36.6 11.3 35.4 12 34.2 13Z"/>
       </svg>
-      <span><span class="brand-name" data-i18n="brand.name">أرشديني</span><span class="brand-tag" data-i18n="brand.tag">Guide me · استشاراتكِ سرّية دائمًا</span></span>
+      <span><span class="brand-name"><span data-i18n="brand.name">أرشديني</span> <small class="brand-who" data-i18n="footer.counselor">أ. خيرية علي</small></span><span class="brand-tag" data-i18n="brand.tag">Guide me · استشاراتكِ سرّية دائمًا</span></span>
     </a>
     <nav class="nav" data-i18n-aria="nav.label">
       <a href="#home" data-nav="home" data-i18n="nav.home">الرئيسية</a>
@@ -156,6 +242,13 @@
               <span data-i18n="hero.cta">اكتبي سؤالكِ بسرية</span>
             </a>
             <span class="hand" style="font-size:1.15rem" data-i18n="hero.hand"></span>
+          </div>
+          <div class="yt-row">
+            <a class="yt-link" id="youtubeLink" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor"/><path d="M10 9.2v5.6l4.8-2.8Z" fill="var(--surface)"/></svg>
+      <span data-i18n="yt.cta">انتقلي إلى قناة اليوتيوب</span>
+      <svg class="yt-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+    </a>
           </div>
           <p class="trust">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
@@ -208,6 +301,22 @@
             <li><h3 data-i18n="how.3t"></h3><p data-i18n="how.3d"></p></li>
           </ol>
         </div>
+      </div>
+    </div>
+
+    <div class="section" style="padding-top:0">
+      <div class="wrap">
+        <a class="vt-band" id="valuesLink" href="#" target="_blank" rel="noopener">
+          <span class="vt-letters" aria-hidden="true"><span class="vc-lilac">ق</span><span class="vc-mint">ي</span><span class="vc-sun">م</span></span>
+          <span class="vt-text">
+            <span class="vt-eyebrow" data-i18n="vt.eyebrow"></span>
+            <span class="vt-title" data-i18n="vt.title"></span>
+            <span class="vt-desc" data-i18n="vt.desc"></span>
+          </span>
+          <span class="btn btn-primary vt-btn"><span data-i18n="vt.btn"></span>
+            <svg class="flip-rtl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
       </div>
     </div>
 
@@ -375,7 +484,7 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <span><span data-i18n="brand.name">أرشديني</span> · <span id="schoolName"></span></span>
+    <span><span data-i18n="brand.name">أرشديني</span> · <span data-i18n="footer.counselor">أ. خيرية علي</span></span>
     <span class="hand" data-i18n="footer.tag"></span>
   </div>
 </footer>
@@ -397,7 +506,16 @@
   let passShown = false;
 
   if (Api.mode === "demo") $("#demoBar").hidden = false;
+
+  // روابط خارجية من config.js (Padlet + اليوتيوب)
+  function setExternal(el, url) {
+    if (!el) return;
+    if (url) { el.href = url; el.removeAttribute("aria-disabled"); }
+    else { el.href = "#"; el.setAttribute("aria-disabled", "true"); el.addEventListener("click", e => e.preventDefault()); }
+  }
   const CFG = window.MURSHIDA_CONFIG || {};
+  setExternal($("#valuesLink"), (CFG.PADLET_URL || "").trim());
+  setExternal($("#youtubeLink"), (CFG.YOUTUBE_URL || "").trim());
 
   function schoolName() {
     const n = CFG.SCHOOL_NAME;
@@ -428,32 +546,34 @@
         <a class="btn btn-primary" href="#signup">${t("btn.signup")}</a>`;
     }
     document.querySelectorAll("[data-cta]").forEach(a => a.setAttribute("href", user ? "#my" : "#signup"));
-    $("#schoolName").textContent = schoolName();
   }
 
   function route() {
     const id = (location.hash || "#home").slice(1) || "home";
-    let view = HOME_ANCHORS.includes(id) ? "home" : id;
+    let view = HOME_ANCHORS.includes(id) ? "home" : (id === "values" || id.startsWith("values-")) ? "values" : id;
     if (!document.querySelector(`[data-view="${view}"]`)) view = "home";
     if (PRIVATE_VIEWS.includes(view) && !user) view = "login";
     if ((view === "signup" || view === "login") && user) view = "my";
     if (view === "welcome" && !justCreated) view = user ? "my" : "home";
+    const prevView = currentView;
     currentView = view;
 
     views.forEach(v => (v.hidden = v.dataset.view !== view));
     document.querySelectorAll("[data-nav]").forEach(a => {
-      const on = view === "home" && a.dataset.nav === (HOME_ANCHORS.includes(id) ? id : "home");
+      const on = view === "values" ? a.dataset.nav === "values"
+        : view === "home" && a.dataset.nav === (HOME_ANCHORS.includes(id) ? id : "home");
       if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
     });
 
-    if (view === "home") {
-      const el = id !== "home" ? document.getElementById(id) : null;
+    if (view === "home" || view === "values") {
+      const el = (id !== "home" && id !== "values") ? document.getElementById(id) : null;
       if (el) el.scrollIntoView({ block: "start" }); else window.scrollTo(0, 0);
     } else {
       window.scrollTo(0, 0);
     }
     if (view === "my") { $("#myName").textContent = user.username; loadMy(); }
     if (view === "welcome") showWelcome();
+    if (view === "values" && window.ValuesPage) ValuesPage.show(prevView !== "values");
   }
 
   // ---------- إنشاء حساب ----------
@@ -556,6 +676,7 @@
 
   // ---------- تغيير اللغة ----------
   window.addEventListener("langchange", () => {
+    if (window.ValuesPage) ValuesPage.repaint();
     renderHeader();
     if (currentView === "my") paintMy();
     if (currentView === "welcome" && justCreated) paintPass();
