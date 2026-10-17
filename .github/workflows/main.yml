@@ -1,0 +1,23 @@
+name: Keep Supabase awake
+
+on:
+  schedule:
+    - cron: "17 6 */2 * *"
+  workflow_dispatch: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase
+        env:
+          SUPABASE_URL: https://xyqabnlozdyddsjidwjs.supabase.co
+          SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh5cWFibmxvemR5ZGRzamlkd2pzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5Njc1NzEsImV4cCI6MjEwNzU0MzU3MX0.AEXEwotgE9IlPc0evdsA565bRW4HDUGsZreDEFL5gQY
+        run: |
+          curl --fail --silent --show-error --max-time 30 -X POST \
+            "$SUPABASE_URL/rest/v1/rpc/keep_alive" \
+            -H "Content-Type: application/json" -d '{}' \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY"
+          echo ""
+          echo "Supabase is awake"
